@@ -1,6 +1,7 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PortFol.Models;
+using PortFol.Resources;
+using System.Diagnostics;
 
 namespace PortFol.Controllers
 {
@@ -13,9 +14,14 @@ namespace PortFol.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            // El Helper ensambla la lista de mensajes del .resx.
+            List<string> introMessages = UIHelper.GetIntroSequenceMessages();
+
+            // Enviamos la lista de mensajes a la vista como nuestro Modelo.
+            return View(introMessages);
         }
 
         public IActionResult Privacy()

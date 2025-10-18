@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using PortFol.DataAccess;
+using Microsoft.EntityFrameworkCore.SqlServer; // Agrega esta línea
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Obtener la cadena de conexión del archivo appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// 1. Registro del DbContext con Inyección de Dependencias
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    // Usamos el proveedor SQL Server y la cadena de conexión.
+    options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
@@ -27,3 +41,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

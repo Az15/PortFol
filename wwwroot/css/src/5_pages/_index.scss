@@ -1,0 +1,92 @@
+// wwwroot/css/src/5_pages/_index.scss
+@use '../1_abstract/variables' as variables;
+@use '../1_abstract/mixins' as mixins;
+
+// Contenedor de la Terminal (FullScreen)
+#intro-terminal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 5%;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &.fade-out {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+        pointer-events: none;
+    }
+}
+
+// Estilo del texto del Terminal
+.terminal-window {
+    width: 800px;
+    max-width: 90%;
+    min-height: 150px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid variables.$color-neon-primary;
+    padding: 15px;
+    box-shadow: variables.$shadow-neon-primary;
+    overflow: hidden;
+
+    .terminal-text {
+        color: variables.$color-neon-primary;
+        font-family: variables.$font-terminal;
+        white-space: pre-wrap;
+        line-height: 1.4;
+        margin: 0;
+    }
+}
+
+// Estilos del Popup de Error (El Bug)
+.bug-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    animation: bug-shake 0.5s infinite alternate; // temblor
+
+    .bug-alert-box {
+        @include mixins.glass-panel;
+        padding: 30px;
+        border: 2px solid variables.$color-neon-error;
+        box-shadow: 0 0 15px rgba(variables.$color-neon-error, 0.8);
+        text-align: center;
+    }
+
+    .bug-title {
+        color: variables.$color-neon-error;
+        font-size: 1.5em;
+        text-shadow: 0 0 8px rgba(variables.$color-neon-error, 0.9);
+        margin-bottom: 10px;
+    }
+
+    .terminal-button {
+        background-color: variables.$color-neon-error;
+        color: variables.$color-bg-dark;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-family: variables.$font-terminal;
+        margin-top: 15px;
+        @include mixins.neon-glow(variables.$color-neon-error);
+
+        &:hover {
+            background-color: darken(variables.$color-neon-error, 10%);
+        }
+    }
+}
+
+//animacion de temblor
+@keyframes bug-shake {
+    from {
+        transform: translate(-50%, -50%) rotate(0.5deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-0.5deg);
+    }
+}

@@ -1,0 +1,17 @@
+// Paleta de Colores
+$color-bg-dark: #0A0A10; // Fondo oscuro del terminal
+$color-bg-glass: rgba(25, 25, 35, 0.7); // Fondo semi-transparente para Glassmorphism
+$color-text-main: #EAEAEA; // Blanco suave para texto
+$color-text-low: #7A7A90; // Gris suave para texto auxiliar
+
+// Colores de Acento (neon/HUD) 
+$color-neon-primary: #00FFC0; // Verde Cian brillante (exito, OK)
+$color-neon-secondary: #00A6FF; // Azul Cian (Interaccion, Links)
+$color-neon-error: #FF3366; // Rojo/Magenta (Error, Bug)
+
+// Tipografia: Monoespaciada es crucial para el look de Terminal
+$font-terminal: 'Fira Code', 'Consolas', monospace;
+
+
+$shadow-neon-primary: 0 0 10px rgba($color-neon-primary, 0.7), 0 0 5px rgba($color-neon-primary, 0.5);
+$transition-speed: 0.3s;

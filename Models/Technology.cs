@@ -17,7 +17,7 @@ namespace PortFol.Models
         public string Category { get; set; } // Backend, Frontend, Database, Cloud
 
         // Propiedad de Navegación Inversa (para la relación Muchos a Muchos)
-        public ICollection<ProjectTechnology> ProjectTechnologies { get set; }
+        public ICollection<ProjectTechnology> ProjectTechnologies { get;  set; }
 
         // Propiedad de Navegación Inversa (para la relación con Skill)
         public ICollection<Skill> Skills { get; set; }

@@ -1,0 +1,47 @@
+// wwwroot/css/src/3_components/_navbar_capsule.scss
+@use '../1_abstract/variables' as variables;
+@use '../1_abstract/mixins' as mixins;
+
+$navbar-height-collapsed: 60px; // Altura minima de la pestania
+$navbar-width-expanded: 80%; // Ancho al expandirse
+
+#main-navbar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); // Centrado horizontal
+    z-index: 1000;
+    // Estado Colapsado (Pestania inicial)
+    width: 150px;
+    height: $navbar-height-collapsed;
+    @include mixins.glass-panel;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: none;
+    // Por defecto, oculta los links
+    .navbar-links {
+        display: none;
+    }
+    // TRANSICIon
+    transition: width variables.$transition-speed, height variables.$transition-speed, border-radius variables.$transition-speed * 2, background-color variables.$transition-speed;
+    // Estado Expandido (Activado por JS)
+    &.expanded {
+        width: $navbar-width-expanded; // Se expande a un ancho mayor
+        height: $navbar-height-collapsed * 2; // Altura para mostrar los links
+        border-radius: 15px; // Se redondean todas las esquinas para el look de "bandeja"
+
+        .navbar-links {
+            display: flex; // Muestra los links
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            padding: 10px 15px;
+            @include mixins.neon-glow(variables.$color-neon-secondary);
+            border-radius: 5px;
+        }
+    }
+}

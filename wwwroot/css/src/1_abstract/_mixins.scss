@@ -1,0 +1,15 @@
+// Mixin para el efecto Glassmorphism (Usaremos la variable $color-bg-glass)
+@use '../1_abstract/variables' as variables;
+
+@mixin glass-panel {
+    background-color: variables.$color-bg-glass;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+@mixin neon-glow($color) {
+    box-shadow: 0 0 5px $color, 0 0 15px $color, inset 0 0 5px $color;
+    transition: variables.$transition-speed;
+}

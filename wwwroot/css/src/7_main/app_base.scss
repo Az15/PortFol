@@ -1,0 +1,17 @@
+// app_base.scss -> Compila a app_base.css (Cargado en _Layout.cshtml)
+
+// 1. ABSTRACTS (Variables y Funciones)
+@use '../1_abstract/variables';
+@use '../1_abstract/mixins';
+
+
+@use '../2_base/reset';
+@use '../2_base/typography';
+
+// 3. LAYOUT (Estilos del Body, Container Principal)
+@use '../4_layout/layout';
+
+// 4. COMPONENTES GLOBALES (Navbar, Botones de uso comun, etc.)
+@use '../3_components/navbar_capsule';
+@use '../3_components/button_terminal';
+@use '../3_components/popup_modal';

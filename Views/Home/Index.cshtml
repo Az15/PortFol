@@ -1,8 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<string> 
+
+@{
+    ViewData["Title"] = "System Access";
+    Layout = "_Layout"; // Usamos nuestro Layout principal
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/7_main/index_view.css" />
+
+<div id="intro-terminal">
+    <div class="terminal-window">
+        <pre id="typing-output" class="terminal-text"></pre>
+    </div>
+
+    <div id="bug-popup-container" class="bug-container hidden">
+        <div class="bug-alert-box">
+            <p class="bug-title">@PortFol.Resources.UIText.BugTitle</p>
+            <p class="bug-message">@PortFol.Resources.UIText.BugMessage</p>
+
+            <button id="fix-bug-button" class="terminal-button">
+                @PortFol.Resources.UIText.BugFixButtonText
+            </button>
+        </div>
+    </div>
 </div>
+
+<div id="main-dashboard-content" class="dashboard-content hidden">
+    <h1>@PortFol.Resources.UIText.WelcomeTitle</h1>
+    <p>¡Sistema de portafolio en línea y estable!</p>
+</div>
+
+
+@section Scripts {
+    <script>
+        // Preparamos los mensajes del Modelo para el script JS
+        const INTRO_MESSAGES = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    </script>
+
+    <script type="module" src="~/js/Home/Index/entry.js"></script>
+}
